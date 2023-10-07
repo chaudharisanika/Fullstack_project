@@ -1,41 +1,26 @@
 const express = require('express');
 const path = require('path');
 // const mongoose = require('mongoose');
+const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override');
 const Campground = require('./models/campground');
 
+
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp' , { useNewUrlParser: true,useUnifiedTopology: true})
+mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp' , { useNewUrlParser: true, useUnifiedTopology: true})
 //moviesApp name database is created
 .then(() =>{
-    console.log("Connection opened")
+    console.log("Connection open")
 })
 .catch(err => {
     console.log("OH no error")
     console.log(err)
 })
-// mongoose.connect('mongodb://localhost:27017/yelp-camp', {               //for connecting mongoose from campground
-//     useNewUrlParser: true,
-//     useCreateIndex: true,
-//     useUnifiedTopology: true
-// });
 
-// const db = mongoose.connection
-// .then(() =>{
-//     console.log("Connection open")
-// })
-// .catch(err => {
-//     console.log("OH no error")
-//     console.log(err)
-// })
-// db.on("error", console.error.bind(console, "connection error:"));
-// db.once("open", () => {
-//     console.log("Database connected");
-// });
 
 const app = express();
 
-
+app.engine('ejs', ejsMate)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'))
 
