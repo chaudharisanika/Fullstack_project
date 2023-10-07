@@ -5,10 +5,10 @@ const methodOverride = require('method-override');
 const Campground = require('./models/campground');
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp' , { useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp' , { useNewUrlParser: true,useUnifiedTopology: true})
 //moviesApp name database is created
 .then(() =>{
-    console.log("Connection open")
+    console.log("Connection opened")
 })
 .catch(err => {
     console.log("OH no error")
